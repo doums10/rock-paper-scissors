@@ -27,23 +27,25 @@ function win(userChoice, computerChoice)
 	userScore++;
 	userScore_span.innerHTML = userScore;
 	computerScore_span.innerHTML = computerScore;
+	const userChoice_div = document.getElementById(userChoice);
 	result_p.innerHTML = `${convertToWord(userChoice)}(🎮)  beats  ${convertToWord(computerChoice)}(💻)  . You win! 🔥`;
-	userChoice = document.getElementById(userChoice).classList.add('green-glow');
+	userChoice = userChoice_div.classList.add('green-glow');//ajout de la bordure verte en cas de victoire sur le choix de l'user
+	setTimeout(function () { userChoice_div.classList.remove('green-glow') }, 300);
 }
 
 function lose(userChoice, computerChoice)
 {//fonction qui va définir ce qu'il se passe quand l'user perd.
-computerScore++;
-userScore_span.innerHTML = userScore;
-computerScore_span.innerHTML = computerScore;
-result_p.innerHTML = `${convertToWord(userChoice)}(🎮)  loses to ${convertToWord(computerChoice)}(💻)  . You lost... 💩`;
+	computerScore++;
+	userScore_span.innerHTML = userScore;
+	computerScore_span.innerHTML = computerScore;
+	result_p.innerHTML = `${convertToWord(userChoice)}(🎮)  loses to ${convertToWord(computerChoice)}(💻)  . You lost... 💩`;
 }
 
 function draw(userChoice, computerChoice)
 {//fonction qui va définir ce qu'il se passe quand l'user et l'ordi sont à égalité.
-userScore_span.innerHTML = userScore;
-computerScore_span.innerHTML = computerScore;
-result_p.innerHTML = `${convertToWord(userChoice)}(🎮)  equals  ${convertToWord(computerChoice)}(💻)  . It's a draw! 👎`;
+	userScore_span.innerHTML = userScore;
+	computerScore_span.innerHTML = computerScore;
+	result_p.innerHTML = `${convertToWord(userChoice)}(🎮)  equals  ${convertToWord(computerChoice)}(💻)  . It's a draw! 👎`;
 }
 
 function game(userChoice)
