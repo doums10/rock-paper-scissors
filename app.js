@@ -28,6 +28,7 @@ function win(userChoice, computerChoice)
 	userScore_span.innerHTML = userScore;
 	computerScore_span.innerHTML = computerScore;
 	result_p.innerHTML = `${convertToWord(userChoice)}(🎮)  beats  ${convertToWord(computerChoice)}(💻)  . You win! 🔥`;
+	userChoice = document.getElementById(userChoice).classList.add('green-glow');
 }
 
 function lose(userChoice, computerChoice)
