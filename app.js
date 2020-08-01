@@ -8,6 +8,8 @@ const rock_div = document.getElementById('r');
 const paper_div = document.getElementById("p");
 const scissors_div = document.getElementById("s");
 
+
+//fonction qui va définir la randomisation des choix de l'ordi
 function getComputerChoice()
 {
 	const choices = ['r', 'p', 's'];
@@ -22,30 +24,39 @@ function convertToWord(letter)
 	return "Scissors";
 }
 
+//fonction qui va définir ce qu'il se passe quand l'user gagne.
 function win(userChoice, computerChoice)
-{//fonction qui va définir ce qu'il se passe quand l'user gagne.
+{
 	userScore++;
 	userScore_span.innerHTML = userScore;
 	computerScore_span.innerHTML = computerScore;
 	const userChoice_div = document.getElementById(userChoice);
 	result_p.innerHTML = `${convertToWord(userChoice)}(🎮)  beats  ${convertToWord(computerChoice)}(💻)  . You win! 🔥`;
 	userChoice = userChoice_div.classList.add('green-glow');//ajout de la bordure verte en cas de victoire sur le choix de l'user
-	setTimeout(function () { userChoice_div.classList.remove('green-glow') }, 300);
+	setTimeout(() => userChoice_div.classList.remove('green-glow') , 300);
 }
 
+//fonction qui va définir ce qu'il se passe quand l'user perd.
 function lose(userChoice, computerChoice)
-{//fonction qui va définir ce qu'il se passe quand l'user perd.
+{
 	computerScore++;
 	userScore_span.innerHTML = userScore;
 	computerScore_span.innerHTML = computerScore;
+	const userChoice_div = document.getElementById(userChoice);//création de cette variable pour éviter le doublon plus bas
 	result_p.innerHTML = `${convertToWord(userChoice)}(🎮)  loses to ${convertToWord(computerChoice)}(💻)  . You lost... 💩`;
+	userChoice = userChoice_div.classList.add('red-glow');//ajout de la bordure verte en cas de victoire sur le choix de l'user
+	setTimeout(() => userChoice_div.classList.remove('red-glow') , 300);
 }
 
+//fonction qui va définir ce qu'il se passe quand l'user et l'ordi sont à égalité.
 function draw(userChoice, computerChoice)
-{//fonction qui va définir ce qu'il se passe quand l'user et l'ordi sont à égalité.
+{
 	userScore_span.innerHTML = userScore;
 	computerScore_span.innerHTML = computerScore;
+	const userChoice_div = document.getElementById(userChoice);
 	result_p.innerHTML = `${convertToWord(userChoice)}(🎮)  equals  ${convertToWord(computerChoice)}(💻)  . It's a draw! 👎`;
+	userChoice = userChoice_div.classList.add('gray-glow');//ajout de la bordure verte en cas de victoire sur le choix de l'user
+	setTimeout(() => userChoice_div.classList.remove('gray-glow') , 300);
 }
 
 function game(userChoice)
@@ -74,22 +85,11 @@ function game(userChoice)
 	}
 }
 
-
-
 function main()
 {
-	rock_div.addEventListener('click', function ()//fonction qui va écouter le click sur chaque bouton
-	{
-		game("r");
-	});
-	paper_div.addEventListener('click', function ()
-	{
-		game("p");
-	});
-	scissors_div.addEventListener('click', function ()
-	{
-		game("s");
-	});
+	rock_div.addEventListener('click', () => game("r"));//fonction qui va écouter le click sur chaque bouton 
+	paper_div.addEventListener('click', () => game("p"));
+	scissors_div.addEventListener('click', () => game("s"));
 }
 main();
 
