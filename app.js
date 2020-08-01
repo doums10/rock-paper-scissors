@@ -27,17 +27,22 @@ function win(userChoice, computerChoice)
 	userScore++;
 	userScore_span.innerHTML = userScore;
 	computerScore_span.innerHTML = computerScore;
-	result_p.innerHTML = `${convertToWord(userChoice)}  beats  ${convertToWord(computerChoice)}  . You win! 🔥`;
+	result_p.innerHTML = `${convertToWord(userChoice)}(🎮)  beats  ${convertToWord(computerChoice)}(💻)  . You win! 🔥`;
 }
 
-function lose()
+function lose(userChoice, computerChoice)
 {//fonction qui va définir ce qu'il se passe quand l'user perd.
-	console.log("LOSE");
+computerScore++;
+userScore_span.innerHTML = userScore;
+computerScore_span.innerHTML = computerScore;
+result_p.innerHTML = `${convertToWord(userChoice)}(🎮)  loses to ${convertToWord(computerChoice)}(💻)  . You lost... 💩`;
 }
 
-function draw()
+function draw(userChoice, computerChoice)
 {//fonction qui va définir ce qu'il se passe quand l'user et l'ordi sont à égalité.
-	console.log("DRAW ");
+userScore_span.innerHTML = userScore;
+computerScore_span.innerHTML = computerScore;
+result_p.innerHTML = `${convertToWord(userChoice)}(🎮)  equals  ${convertToWord(computerChoice)}(💻)  . It's a draw! 👎`;
 }
 
 function game(userChoice)
